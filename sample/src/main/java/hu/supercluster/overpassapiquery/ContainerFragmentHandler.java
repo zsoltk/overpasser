@@ -21,7 +21,7 @@ class ContainerFragmentHandler extends AbstractFragmentHandler {
 
     final MapFragment getMapFragment() {
         if (mapFragment == null) {
-            mapFragment = getFragment(MapFragment.class, new MapFragment());
+            mapFragment = getFragment(MapFragment_.class, MapFragment_.builder().build());
         }
 
         return mapFragment;
