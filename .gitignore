@@ -1,0 +1,34 @@
+/captures
+.DS_Store
+.idea
+.gradle
+**/build
+**/bin
+**/gen
+proguard
+out
+
+**/*.iml
+*.class
+*.apk
+*.ap_
+*.dex
+*.log
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+local.properties
+release.properties
+signing.properties
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# Gradle-Android
+gradle-app.setting
