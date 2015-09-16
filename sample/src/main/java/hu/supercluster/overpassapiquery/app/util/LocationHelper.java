@@ -1,4 +1,4 @@
-package hu.supercluster.util;
+package hu.supercluster.overpassapiquery.app.util;
 
 import android.location.Location;
 import android.location.LocationManager;

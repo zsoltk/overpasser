@@ -1,4 +1,4 @@
-package hu.supercluster.util;
+package hu.supercluster.overpassapiquery.app.util;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;

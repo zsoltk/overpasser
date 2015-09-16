@@ -1,11 +1,11 @@
-package hu.supercluster.overpassapiquery;
+package hu.supercluster.overpassapiquery.app.activity.container;
 
 import android.support.v4.app.FragmentActivity;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
-import hu.supercluster.util.AbstractFragmentHandler;
+import hu.supercluster.overpassapiquery.app.util.AbstractFragmentHandler;
 
 @EBean
 class ContainerFragmentHandler extends AbstractFragmentHandler {

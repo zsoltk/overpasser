@@ -1,4 +1,4 @@
-package hu.supercluster.overpassapiquery;
+package hu.supercluster.overpassapiquery.app.activity.container;
 
 import android.os.Bundle;
 

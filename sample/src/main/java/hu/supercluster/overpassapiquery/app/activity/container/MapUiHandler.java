@@ -1,4 +1,4 @@
-package hu.supercluster.overpassapiquery;
+package hu.supercluster.overpassapiquery.app.activity.container;
 
 import android.location.Location;
 
@@ -11,7 +11,7 @@ import com.google.android.gms.maps.model.LatLng;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
-import hu.supercluster.util.LocationHelper;
+import hu.supercluster.overpassapiquery.app.util.LocationHelper;
 
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
 
