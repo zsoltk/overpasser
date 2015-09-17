@@ -38,6 +38,8 @@ dependencies {
 
     apt "org.androidannotations:androidannotations:3.3.2"
     compile "org.androidannotations:androidannotations-api:3.3.2"
+
+    compile project(':library')
 }
 
 apt {
