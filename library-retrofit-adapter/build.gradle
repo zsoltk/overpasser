@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
@@ -17,7 +17,6 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "hu.supercluster.overpassapiquery"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -37,14 +36,8 @@ dependencies {
 
     // ---------
 
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.google.android.gms:play-services-location:7.8.0'
-    compile 'com.google.android.gms:play-services-maps:7.8.0'
-
-    // ---------
-
-    compile project(':library')
-    compile project(':library-retrofit-adapter')
+    compile 'com.squareup.okio:okio:1.3.0'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
 }
 
 apt {
