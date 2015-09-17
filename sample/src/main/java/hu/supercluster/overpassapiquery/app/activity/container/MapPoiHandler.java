@@ -12,8 +12,8 @@ import org.androidannotations.annotations.UiThread;
 import java.util.HashMap;
 import java.util.Map;
 
-import hu.supercluster.overpassapiquery.adapter.OverApiResult;
-import hu.supercluster.overpassapiquery.adapter.OverApiResult.Element;
+import hu.supercluster.overpassapiquery.adapter.OverpassQueryResult;
+import hu.supercluster.overpassapiquery.adapter.OverpassQueryResult.Element;
 
 @EBean
 public class MapPoiHandler {
@@ -21,7 +21,7 @@ public class MapPoiHandler {
     private Map<Long, Element> poiMap;
 
     @Bean
-    MapOverpassApiAdapter overApiAdapter;
+    MapOverpassAdapter overApiAdapter;
 
     public MapPoiHandler() {
         poiMap = new HashMap<>();
@@ -37,7 +37,7 @@ public class MapPoiHandler {
 
     @Background
     void fetchPois(LatLngBounds bounds) {
-        OverApiResult result = overApiAdapter.search(bounds);
+        OverpassQueryResult result = overApiAdapter.search(bounds);
 
         for (Element poi : result.elements) {
             if (!alreadyStored(poi)) {

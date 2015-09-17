@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OverApiResult {
+public class OverpassQueryResult {
     @SerializedName("elements")
     public List<Element> elements = new ArrayList<>();
 

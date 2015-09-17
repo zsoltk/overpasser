@@ -5,19 +5,19 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
-import hu.supercluster.overpassapiquery.library.query.OverApiQuery;
-import hu.supercluster.overpassapiquery.adapter.OverApiResult;
-import hu.supercluster.overpassapiquery.adapter.OverPassServiceProvider;
+import hu.supercluster.overpassapiquery.adapter.OverpassQueryResult;
+import hu.supercluster.overpassapiquery.library.query.OverpassQuery;
+import hu.supercluster.overpassapiquery.adapter.OverpassServiceProvider;
 
-import static hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputFormat.JSON;
+import static hu.supercluster.overpassapiquery.library.output.OutputFormat.JSON;
 
 @EBean
-public class MapOverpassApiAdapter {
+public class MapOverpassAdapter {
     @Bean
-    OverPassServiceProvider serviceProvider;
+    OverpassServiceProvider serviceProvider;
 
-    public OverApiResult search(final LatLngBounds bounds) {
-        OverApiQuery query = new OverApiQuery()
+    public OverpassQueryResult search(final LatLngBounds bounds) {
+        OverpassQuery query = new OverpassQuery()
                 .format(JSON)
                 .timeout(30)
                 .mapQuery()
@@ -37,14 +37,14 @@ public class MapOverpassApiAdapter {
         return interpret(query.build());
     }
 
-    private OverApiResult interpret(String query) {
+    private OverpassQueryResult interpret(String query) {
         try {
             return serviceProvider.get().interpreter(query);
 
         } catch (Exception e) {
             e.printStackTrace();
 
-            return new OverApiResult();
+            return new OverpassQueryResult();
         }
     }
 }

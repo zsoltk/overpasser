@@ -5,19 +5,20 @@ import org.androidannotations.annotations.EBean;
 import retrofit.RestAdapter;
 
 @EBean(scope = EBean.Scope.Singleton)
-public class OverPassServiceProvider {
-    private final OverPassService service;
+public class OverpassServiceProvider {
+    private final OverpassService service;
 
-    public OverPassServiceProvider() {
+    public OverpassServiceProvider() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("http://overpass-api.de/api")
                 .setLogLevel(RestAdapter.LogLevel.BASIC)
-                .build();
+                .build()
+        ;
 
-        service = restAdapter.create(OverPassService.class);
+        service = restAdapter.create(OverpassService.class);
     }
 
-    public OverPassService get() {
+    public OverpassService get() {
         return service;
     }
 }
