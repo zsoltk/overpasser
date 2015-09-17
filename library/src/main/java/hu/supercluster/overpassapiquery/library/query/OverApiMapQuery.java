@@ -1,4 +1,4 @@
-package hu.supercluster.overpassapiquery.query;
+package hu.supercluster.overpassapiquery.library.query;
 
 import java.util.Set;
 

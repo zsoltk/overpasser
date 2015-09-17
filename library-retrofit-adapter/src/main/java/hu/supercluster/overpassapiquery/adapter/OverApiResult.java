@@ -1,4 +1,4 @@
-package hu.supercluster.overpassapiquery.api;
+package hu.supercluster.overpassapiquery.adapter;
 
 import com.google.gson.annotations.SerializedName;
 

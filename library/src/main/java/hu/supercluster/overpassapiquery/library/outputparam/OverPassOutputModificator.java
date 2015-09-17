@@ -1,4 +1,4 @@
-package hu.supercluster.overpassapiquery.outputparam;
+package hu.supercluster.overpassapiquery.library.outputparam;
 
 public enum OverPassOutputModificator {
     BB,

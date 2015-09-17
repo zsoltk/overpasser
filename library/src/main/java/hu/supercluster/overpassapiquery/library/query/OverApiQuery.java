@@ -1,13 +1,13 @@
-package hu.supercluster.overpassapiquery.query;
+package hu.supercluster.overpassapiquery.library.query;
 
-import hu.supercluster.overpassapiquery.outputparam.OverPassOutputFormat;
-import hu.supercluster.overpassapiquery.outputparam.OverPassOutputModificator;
-import hu.supercluster.overpassapiquery.outputparam.OverPassOutputOrder;
-import hu.supercluster.overpassapiquery.outputparam.OverPassOutputVerbosity;
+import hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputFormat;
+import hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputModificator;
+import hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputOrder;
+import hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputVerbosity;
 
-import static hu.supercluster.overpassapiquery.outputparam.OverPassOutputModificator.*;
-import static hu.supercluster.overpassapiquery.outputparam.OverPassOutputOrder.*;
-import static hu.supercluster.overpassapiquery.outputparam.OverPassOutputVerbosity.*;
+import static hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputModificator.*;
+import static hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputOrder.*;
+import static hu.supercluster.overpassapiquery.library.outputparam.OverPassOutputVerbosity.*;
 
 public class OverApiQuery extends AbstractOverApiQuery {
 

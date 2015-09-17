@@ -1,4 +1,4 @@
-package hu.supercluster.overpassapiquery.query;
+package hu.supercluster.overpassapiquery.library.query;
 
 abstract class AbstractOverApiQuery {
     protected OverApiQueryLanguageBuilder builder;

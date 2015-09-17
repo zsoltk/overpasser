@@ -1,4 +1,4 @@
-package hu.supercluster.overpassapiquery.query;
+package hu.supercluster.overpassapiquery.library.query;
 
 abstract class AbstractOverApiSubQuery extends AbstractOverApiQuery {
     private OverApiQuery parent;
