@@ -1,6 +1,8 @@
 package hu.supercluster.overpassapiquery.app.activity.container;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLngBounds;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
@@ -18,13 +21,18 @@ import hu.supercluster.overpassapiquery.app.view.TouchableWrapper;
 
 @EFragment
 public class MapFragment extends SupportMapFragment implements OnMapReadyCallback, TouchableWrapper.Callbacks {
+    public static final int TOUCH_TIMEOUT = 400;
     private GoogleMap googleMap;
+    private CountDownTimer touchTimeoutTimer;
 
     @InstanceState
     float zoomLevel = 15;
 
     @Bean
     MapUiHandler uiHandler;
+
+    @Bean
+    MapPoiHandler poiHandler;
 
     public GoogleMap getGoogleMap() {
         return googleMap;
@@ -33,6 +41,7 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     @AfterInject
     void init() {
         uiHandler.setFragment(this);
+        poiHandler.setFragment(this);
     }
 
     @Override
@@ -55,15 +64,40 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
         this.googleMap = googleMap;
         uiHandler.setMapParams();
         uiHandler.moveMapToCurrentPosition();
+        searchPois();
+    }
+
+    private void searchPois() {
+        poiHandler.fetchPois(getLatLngBounds());
+    }
+
+    LatLngBounds getLatLngBounds() {
+        return googleMap.getProjection().getVisibleRegion().latLngBounds;
     }
 
     @Override
     public void onWrapperTouchStart() {
-
+        if (touchTimeoutTimer != null) {
+            touchTimeoutTimer.cancel();
+        }
     }
 
     @Override
     public void onWrapperTouchReleased() {
-        
+        touchTimeoutTimer = getTouchTimeoutCountDownTimer();
+        touchTimeoutTimer.start();
+    }
+
+    @NonNull
+    private CountDownTimer getTouchTimeoutCountDownTimer() {
+        return new CountDownTimer(TOUCH_TIMEOUT, TOUCH_TIMEOUT) {
+            @Override
+            public void onTick(long millisUntilFinished) {}
+
+            @Override
+            public void onFinish() {
+                searchPois();
+            }
+        };
     }
 }
