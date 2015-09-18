@@ -17,7 +17,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "hu.supercluster.overpassapiquery"
+        applicationId "hu.supercluster.overpasser"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -52,6 +52,6 @@ dependencies {
 apt {
     arguments {
         androidManifestFile variant.outputs[0].processResources.manifestFile
-        resourcePackageName 'hu.supercluster.overpassapiquery'
+        resourcePackageName 'hu.supercluster.overpasser'
     }
 }
