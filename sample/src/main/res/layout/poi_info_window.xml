@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minWidth="200dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    >
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/poi_info_placeholder_title"
+        android:visibility="visible"
+        style="@style/Poi.Title" />
+
+    <TextView
+        android:id="@+id/body"
+        android:text="@string/poi_info_placeholder_body"
+        android:visibility="visible"
+        style="@style/Poi.Text" />
+
+    <TextView
+        android:id="@+id/url"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:text="@string/poi_info_placeholder_url"
+        android:visibility="gone"
+        style="@style/Poi.Text" />
+
+</LinearLayout>

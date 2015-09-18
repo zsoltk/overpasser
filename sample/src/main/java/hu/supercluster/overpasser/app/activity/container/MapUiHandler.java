@@ -12,6 +12,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
 import hu.supercluster.overpasser.app.util.LocationHelper;
+import hu.supercluster.overpasser.app.view.PoiInfoWindowAdapter;
 
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
 
@@ -22,6 +23,9 @@ public class MapUiHandler {
     @Bean
     LocationHelper locationHelper;
 
+    @Bean
+    PoiInfoWindowAdapter poiInfoWindowAdapter;
+
     public void setFragment(MapFragment fragment) {
         this.fragment = fragment;
     }
@@ -30,6 +34,7 @@ public class MapUiHandler {
         GoogleMap googleMap = fragment.getGoogleMap();
         googleMap.setMapType(MAP_TYPE_NORMAL);
         googleMap.setMyLocationEnabled(true);
+        googleMap.setInfoWindowAdapter(poiInfoWindowAdapter);
         googleMap.getUiSettings().setMapToolbarEnabled(false);
         googleMap.setOnCameraChangeListener(getOnCameraChangeListener());
         resetMap();

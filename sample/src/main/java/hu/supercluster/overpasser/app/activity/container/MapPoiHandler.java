@@ -1,27 +1,39 @@
 package hu.supercluster.overpasser.app.activity.container;
 
+import android.content.Context;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.UiThread;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import hu.supercluster.overpasser.R;
 import hu.supercluster.overpasser.adapter.OverpassQueryResult;
 import hu.supercluster.overpasser.adapter.OverpassQueryResult.Element;
+import hu.supercluster.overpasser.app.view.PoiInfoWindowAdapter;
 
 @EBean
 public class MapPoiHandler {
     private MapFragment fragment;
     private Map<Long, Element> poiMap;
 
+    @RootContext
+    Context context;
+
     @Bean
     MapOverpassAdapter overApiAdapter;
+
+    @Bean
+    PoiInfoWindowAdapter poiInfoWindowAdapter;
 
     public MapPoiHandler() {
         poiMap = new HashMap<>();
@@ -41,6 +53,7 @@ public class MapPoiHandler {
 
         for (Element poi : result.elements) {
             if (!alreadyStored(poi)) {
+                fixTitle(poi);
                 storePoi(poi);
                 showPoi(poi);
             }
@@ -49,6 +62,14 @@ public class MapPoiHandler {
 
     private boolean alreadyStored(Element poi) {
         return poiMap.containsKey(poi.id);
+    }
+
+    private void fixTitle(Element poi) {
+        Element.Tags info = poi.tags;
+
+        if (info.name == null) {
+            info.name = context.getResources().getString(R.string.poi_category_public_toilet);
+        }
     }
 
     private void storePoi(Element poi) {
@@ -61,6 +82,7 @@ public class MapPoiHandler {
             .position(new LatLng(poi.lat, poi.lon))
         ;
 
-        fragment.getGoogleMap().addMarker(options);
+        Marker marker = fragment.getGoogleMap().addMarker(options);
+        poiInfoWindowAdapter.addMarkerInfo(marker, poi);
     }
 }

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Overpasser sample</string>
+
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="limited">limited</string>
+
+    <string name="poi_category_public_toilet">Public toilet</string>
+    <string name="poi_info_payant">Payant</string>
+
+    <string name="poi_info_placeholder_title">Lorem ipsum</string>
+    <string name="poi_info_placeholder_body">Dolor sit amet</string>
+    <string name="poi_info_placeholder_url">http://foobar.baz</string>
 </resources>
