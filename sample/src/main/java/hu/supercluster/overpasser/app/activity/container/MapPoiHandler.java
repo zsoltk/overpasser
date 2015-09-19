@@ -51,11 +51,13 @@ public class MapPoiHandler {
     void fetchPois(LatLngBounds bounds) {
         OverpassQueryResult result = overApiAdapter.search(bounds);
 
-        for (Element poi : result.elements) {
-            if (!alreadyStored(poi)) {
-                fixTitle(poi);
-                storePoi(poi);
-                showPoi(poi);
+        if (result != null) {
+            for (Element poi : result.elements) {
+                if (!alreadyStored(poi)) {
+                    fixTitle(poi);
+                    storePoi(poi);
+                    showPoi(poi);
+                }
             }
         }
     }
