@@ -1,9 +1,10 @@
 package hu.supercluster.overpasser.adapter;
 
+import retrofit.Call;
 import retrofit.http.GET;
 import retrofit.http.Query;
 
 public interface OverpassService {
-    @GET("/interpreter")
-    OverpassQueryResult interpreter(@Query("data") String data);
+    @GET("/api/interpreter")
+    Call<OverpassQueryResult> interpreter(@Query("data") String data);
 }

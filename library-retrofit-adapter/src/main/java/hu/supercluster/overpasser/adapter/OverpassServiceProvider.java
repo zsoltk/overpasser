@@ -2,20 +2,20 @@ package hu.supercluster.overpasser.adapter;
 
 import org.androidannotations.annotations.EBean;
 
-import retrofit.RestAdapter;
+import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
 
 @EBean(scope = EBean.Scope.Singleton)
 public class OverpassServiceProvider {
     private final OverpassService service;
 
     public OverpassServiceProvider() {
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://overpass-api.de/api")
-                .setLogLevel(RestAdapter.LogLevel.BASIC)
-                .build()
-        ;
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://overpass-api.de")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        service = restAdapter.create(OverpassService.class);
+        service = retrofit.create(OverpassService.class);
     }
 
     public OverpassService get() {

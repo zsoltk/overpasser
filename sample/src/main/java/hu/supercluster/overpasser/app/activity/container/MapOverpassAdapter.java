@@ -39,7 +39,7 @@ public class MapOverpassAdapter {
 
     private OverpassQueryResult interpret(String query) {
         try {
-            return serviceProvider.get().interpreter(query);
+            return serviceProvider.get().interpreter(query).execute().body();
 
         } catch (Exception e) {
             e.printStackTrace();
