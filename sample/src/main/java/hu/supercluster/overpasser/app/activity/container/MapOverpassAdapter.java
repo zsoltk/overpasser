@@ -13,9 +13,6 @@ import static hu.supercluster.overpasser.library.output.OutputFormat.JSON;
 
 @EBean
 public class MapOverpassAdapter {
-    @Bean
-    OverpassServiceProvider serviceProvider;
-
     public OverpassQueryResult search(final LatLngBounds bounds) {
         OverpassQuery query = new OverpassQuery()
                 .format(JSON)
@@ -39,7 +36,7 @@ public class MapOverpassAdapter {
 
     private OverpassQueryResult interpret(String query) {
         try {
-            return serviceProvider.get().interpreter(query).execute().body();
+            return OverpassServiceProvider.get().interpreter(query).execute().body();
 
         } catch (Exception e) {
             e.printStackTrace();
