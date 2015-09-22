@@ -5,7 +5,7 @@
     <string name="no">no</string>
     <string name="limited">limited</string>
 
-    <string name="poi_category_public_toilet">Public toilet</string>
+    <string name="poi_category_public_parking">Public parking</string>
     <string name="poi_info_payant">Payant</string>
 
     <string name="poi_info_placeholder_title">Lorem ipsum</string>

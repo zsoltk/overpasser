@@ -19,7 +19,7 @@ public class MapOverpassAdapter {
                 .timeout(30)
                 .mapQuery()
                     .nodes()
-                    .amenity("toilets")
+                    .amenity("parking")
                     .notEquals("access", "private")
                     .boundingBox(
                             bounds.southwest.latitude,

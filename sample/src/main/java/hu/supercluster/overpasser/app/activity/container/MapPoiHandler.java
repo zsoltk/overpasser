@@ -70,7 +70,7 @@ public class MapPoiHandler {
         Element.Tags info = poi.tags;
 
         if (info.name == null) {
-            info.name = context.getResources().getString(R.string.poi_category_public_toilet);
+            info.name = context.getResources().getString(R.string.poi_category_public_parking);
         }
     }
 
