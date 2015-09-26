@@ -2,12 +2,11 @@ package hu.supercluster.overpasser.app.activity.container;
 
 import com.google.android.gms.maps.model.LatLngBounds;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
 import hu.supercluster.overpasser.adapter.OverpassQueryResult;
-import hu.supercluster.overpasser.library.query.OverpassQuery;
 import hu.supercluster.overpasser.adapter.OverpassServiceProvider;
+import hu.supercluster.overpasser.library.query.OverpassQuery;
 
 import static hu.supercluster.overpasser.library.output.OutputFormat.JSON;
 
@@ -17,7 +16,7 @@ public class MapOverpassAdapter {
         OverpassQuery query = new OverpassQuery()
                 .format(JSON)
                 .timeout(30)
-                .mapQuery()
+                .filterQuery()
                     .nodes()
                     .amenity("parking")
                     .notEquals("access", "private")

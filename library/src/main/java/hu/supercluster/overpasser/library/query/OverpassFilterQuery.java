@@ -9,10 +9,10 @@ import java.util.Set;
  * @see <a href="http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Filters">
  *                http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Filters</a>
  */
-public class OverpassMapQuery extends AbstractOverpassSubQuery {
+public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     private boolean separateNext;
 
-    public OverpassMapQuery(OverpassQuery parent) {
+    public OverpassFilterQuery(OverpassQuery parent) {
         super(parent);
         builder = new OverpassQueryBuilder();
         builder.append("; (");
@@ -24,7 +24,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery prepareNext() {
+    public OverpassFilterQuery prepareNext() {
         separateNext = true;
 
         return this;
@@ -43,7 +43,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      * 
      * @return the current query object
      */
-    public OverpassMapQuery nodes() {
+    public OverpassFilterQuery nodes() {
         applySeparator();
         builder.append("node");
 
@@ -60,7 +60,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery amenity(String amenity) {
+    public OverpassFilterQuery amenity(String amenity) {
         builder.equals("amenity", amenity);
 
         return this;
@@ -74,7 +74,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery amenities(Set<String> amenities) {
+    public OverpassFilterQuery amenities(Set<String> amenities) {
         builder.multipleValues("amenity", amenities);
 
         return this;
@@ -88,7 +88,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery equals(String name, String value) {
+    public OverpassFilterQuery equals(String name, String value) {
         builder.equals(name, value);
 
         return this;
@@ -103,7 +103,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery multipleValues(String name, Set<String> values) {
+    public OverpassFilterQuery multipleValues(String name, Set<String> values) {
         builder.multipleValues(name, values);
 
         return this;
@@ -117,7 +117,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery notEquals(String name, String value) {
+    public OverpassFilterQuery notEquals(String name, String value) {
         builder.notEquals(name, value);
 
         return this;
@@ -131,7 +131,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery regexDoesntMatch(String name, String value) {
+    public OverpassFilterQuery regexDoesntMatch(String name, String value) {
         builder.regexDoesntMatch(name, value);
 
         return this;
@@ -145,7 +145,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery regexMatches(String name, String value) {
+    public OverpassFilterQuery regexMatches(String name, String value) {
         builder.regexMatches(name, value);
 
         return this;
@@ -158,7 +158,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery standaloneParam(String name) {
+    public OverpassFilterQuery standaloneParam(String name) {
         builder.standaloneParam(name);
 
         return this;
@@ -174,7 +174,7 @@ public class OverpassMapQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassMapQuery boundingBox(double lat1, double lon1, double lat2, double lon2) {
+    public OverpassFilterQuery boundingBox(double lat1, double lon1, double lat2, double lon2) {
         builder.boundingBox(lat1, lon1, lat2, lon2);
 
         return this;

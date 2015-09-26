@@ -50,8 +50,8 @@ public class OverpassQuery extends AbstractOverpassQuery {
      *
      * @return the map query
      */
-    public OverpassMapQuery mapQuery() {
-        return new OverpassMapQuery(this);
+    public OverpassFilterQuery filterQuery() {
+        return new OverpassFilterQuery(this);
     }
 
     /**
