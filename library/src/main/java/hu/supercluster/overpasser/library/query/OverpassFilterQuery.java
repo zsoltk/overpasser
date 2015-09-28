@@ -43,7 +43,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
      * 
      * @return the current query object
      */
-    public OverpassFilterQuery nodes() {
+    public OverpassFilterQuery node() {
         applySeparator();
         builder.append("node");
 

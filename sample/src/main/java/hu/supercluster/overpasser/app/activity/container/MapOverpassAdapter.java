@@ -17,7 +17,7 @@ public class MapOverpassAdapter {
                 .format(JSON)
                 .timeout(30)
                 .filterQuery()
-                    .nodes()
+                    .node()
                     .amenity("parking")
                     .notEquals("access", "private")
                     .boundingBox(
