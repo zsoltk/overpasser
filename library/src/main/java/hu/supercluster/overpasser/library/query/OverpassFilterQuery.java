@@ -20,7 +20,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
 
     /**
      * When supplying multiple type elements in a query, use this method to automatically
-     * separate them with a ";" character added in-between.
+     * separate them with a <i>;</i> character added in-between.
      *
      * @return the current query object
      */
@@ -95,7 +95,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
-     * Adds a <i>["name"~{value1}|{value2}|{value3}|...|{valueN}] filter tag to the current query
+     * Adds a <i>["name"~{value1}|{value2}|{value3}|...|{valueN}]</i> filter tag to the current query
      * to add a filter matching for any of the given values.
      * 
      * @param name the filter name
@@ -152,7 +152,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
-     * Adds a <i>["name"] filter tag to the current query.
+     * Adds a <i>["name"]</i> filter tag to the current query.
      * 
      * @param name the filter name
      *
@@ -181,7 +181,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
-     * Closes the current query with the characters ";<;)" and returns the output as a string.
+     * Closes the current query with the characters <i>;&lt;;)</i> and returns the output as a string.
      *
      * @return the query as string
      */

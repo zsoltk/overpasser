@@ -22,6 +22,10 @@ public class OverpassQuery extends AbstractOverpassQuery {
      *
      * @see <a href="http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Output_Format_.28out.29">
      *               http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Output_Format_.28out.29</a>
+     *
+     * @param outputFormat  the OutputFormat to use
+     *
+     * @return the current OverpassQuery object
      */
     public OverpassQuery format(OutputFormat outputFormat) {
         builder.clause("out", outputFormat.toString().toLowerCase());
@@ -74,7 +78,7 @@ public class OverpassQuery extends AbstractOverpassQuery {
     }
 
     /**
-     * Appends a ";" character and the print (out) action to the query.
+     * Appends a <i>;</i> character and the print (out) action to the query.
      *
      * @param verbosity      degree of output verbosity (see {@link OutputVerbosity })
      * @param modificator    output modificator for derived information (see {@link OutputModificator })
@@ -99,7 +103,7 @@ public class OverpassQuery extends AbstractOverpassQuery {
     }
 
     /**
-     * Closes the current query with the character ";" and returns the output as a string.
+     * Closes the current query with the character <i>;</i> and returns the output as a string.
      *
      * @return the query as string
      */
