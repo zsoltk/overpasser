@@ -56,4 +56,23 @@ String query = new OverpassQuery()
 * [sample](https://github.com/zsoltk/overpasser/tree/master/sample) - An Android sample using both of the above
 
 ![](http://imgur.com/A4TGjjx.png)
+
+## Download
+
+The library and the retrofit adapter are available on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Coverpasser). You can find them with [Gradle, please](http://gradleplease.appspot.com/#overpasser) too, or just use these gradle dependencies:
+
+Library:
+```groovy
+dependencies {
+    compile 'hu.supercluster:overpasser:0.1.0'
+}
+```
   
+Retrofit adapter:
+```groovy
+dependencies {
+    compile 'hu.supercluster:overpasser-retrofit-adapter:0.1.0'
+}
+```
+
+**Please note**: This is not a production ready library. Use it at your own risk.
