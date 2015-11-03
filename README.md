@@ -21,7 +21,7 @@ String query = new OverpassQuery()
         .format(JSON)
         .timeout(30)
         .mapQuery()
-            .nodes()
+            .node()
             .amenity("parking")
             .notEquals("access", "private")
             .boundingBox(
