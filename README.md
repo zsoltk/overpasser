@@ -38,7 +38,7 @@ String query = new OverpassQuery()
 
 ### Language support
 * Settings
-  * [output format](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Output_Format_.28out.29) - currently JSON only
+  * [output format](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Output_Format_.28out.29)
   * [timeout](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#timeout)
   * [output parameters](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Print_.28out.29) - verbosity, modificators, sort order
 * [Filters](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Filters)
