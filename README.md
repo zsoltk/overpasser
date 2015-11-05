@@ -20,7 +20,7 @@ out body center qt 100;
 String query = new OverpassQuery()
         .format(JSON)
         .timeout(30)
-        .mapQuery()
+        .filterQuery()
             .node()
             .amenity("parking")
             .notEquals("access", "private")
