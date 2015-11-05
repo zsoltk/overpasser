@@ -51,9 +51,14 @@ String query = new OverpassQuery()
   * setting [bounding box](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Bounding_box)
   
 ### Modules
-* [library](https://github.com/zsoltk/overpasser/tree/master/library) - Core functionality in a standalone module: only Java dependencies
-* [library-retrofit-adapter](https://github.com/zsoltk/overpasser/tree/master/library-retrofit-adapter) - [Retrofit](http://square.github.io/retrofit/) adapter towards the overpass-api server
-* [sample](https://github.com/zsoltk/overpasser/tree/master/sample) - An Android sample using both of the above
+* [library](https://github.com/zsoltk/overpasser/tree/master/library): core functionality in a standalone module 
+  * only Java dependencies
+  * its purpose is to generate the string you can query the overpass-api server with
+* [library-retrofit-adapter](https://github.com/zsoltk/overpasser/tree/master/library-retrofit-adapter): [Retrofit](http://square.github.io/retrofit/) adapter towards the overpass-api server
+  * it will handle sending your generated query to the server and parsing the results
+  * the results are returned in a [simple POJO class](https://github.com/zsoltk/overpasser/blob/master/library-retrofit-adapter/src/main/java/hu/supercluster/overpasser/adapter/OverpassQueryResult.java)
+  * for further info regarding network communication and error handling, please refer to [Retrofit](http://square.github.io/retrofit/) documentation
+* [sample](https://github.com/zsoltk/overpasser/tree/master/sample): an Android sample application using both of the above modules to query for and display the public parking lots within the boundaries of the map
 
 ![](http://imgur.com/A4TGjjx.png)
 
