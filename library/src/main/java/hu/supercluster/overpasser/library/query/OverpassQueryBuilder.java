@@ -1,8 +1,10 @@
 package hu.supercluster.overpasser.library.query;
 
+import java.util.Locale;
 import java.util.Set;
 
 class OverpassQueryBuilder {
+    private static final Locale LOCALE = Locale.US;
     private StringBuilder builder;
 
     public OverpassQueryBuilder() {
@@ -16,7 +18,10 @@ class OverpassQueryBuilder {
     }
 
     public OverpassQueryBuilder boundingBox(double lat1, double lon1, double lat2, double lon2) {
-        builder.append(String.format("(%s,%s,%s,%s)",
+        builder.append(
+                String.format(
+                        LOCALE,
+                        "(%s,%s,%s,%s)",
                         lat1, lon1,
                         lat2, lon2
                 )
@@ -64,7 +69,7 @@ class OverpassQueryBuilder {
     private OverpassQueryBuilder paramRel(String name, String rel, String value) {
         String quotedValue = value.isEmpty() ? "" : String.format("\"%s\"", value);
 
-        builder.append(String.format("[\"%s\"%s%s]", name, rel, quotedValue));
+        builder.append(String.format(LOCALE, "[\"%s\"%s%s]", name, rel, quotedValue));
 
         return this;
     }
