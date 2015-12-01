@@ -1,1 +1,1 @@
-include ':sample', ':library', ':library-retrofit-adapter'
+include ':sample', ':library', ':library-retrofit-adapter', ':tests'
