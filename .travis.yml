@@ -1,0 +1,6 @@
+language: java
+jdk:
+  - oraclejdk7
+
+script:
+  - scripts/run-tests-travis.sh
