@@ -1,5 +1,10 @@
 apply plugin: 'java'
-apply from: 'maven-push.gradle'
+
+// gradle.properties holds credentials and is not checked in
+def gradleProperties = new File('gradle.properties')
+if (gradleProperties.exists()) {
+    apply from: 'maven-push.gradle'
+}
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
