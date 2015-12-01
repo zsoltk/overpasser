@@ -17,17 +17,26 @@ class OverpassQueryBuilder {
         return this;
     }
 
+    private OverpassQueryBuilder paramRel(String name, String rel, String value) {
+        String quotedValue = value.isEmpty() ? "" : String.format("\"%s\"", value);
+
+        return append(
+                String.format(
+                        LOCALE,
+                        "[\"%s\"%s%s]",
+                        name, rel, quotedValue
+                )
+        );
+    }
+
     public OverpassQueryBuilder boundingBox(double lat1, double lon1, double lat2, double lon2) {
-        builder.append(
+        return append(
                 String.format(
                         LOCALE,
                         "(%s,%s,%s,%s)",
-                        lat1, lon1,
-                        lat2, lon2
+                        lat1, lon1, lat2, lon2
                 )
         );
-
-        return this;
     }
 
     public OverpassQueryBuilder standaloneParam(String name) {
@@ -42,18 +51,6 @@ class OverpassQueryBuilder {
         return paramRel(name, "=", value);
     }
 
-    public OverpassQueryBuilder multipleValues(String name, Set<String> values) {
-        StringBuilder joiner = new StringBuilder();
-        for (String value : values) {
-            joiner.append(value);
-            joiner.append("|");
-        }
-
-        joiner.setLength(joiner.length() - 1);
-
-        return paramRel(name, "~", joiner.toString());
-    }
-
     public OverpassQueryBuilder notEquals(String name, String value) {
         return paramRel(name, "!=", value);
     }
@@ -66,12 +63,16 @@ class OverpassQueryBuilder {
         return paramRel(name, "!~", value);
     }
 
-    private OverpassQueryBuilder paramRel(String name, String rel, String value) {
-        String quotedValue = value.isEmpty() ? "" : String.format("\"%s\"", value);
+    public OverpassQueryBuilder multipleValues(String name, Set<String> values) {
+        StringBuilder joiner = new StringBuilder();
+        for (String value : values) {
+            joiner.append(value);
+            joiner.append("|");
+        }
 
-        builder.append(String.format(LOCALE, "[\"%s\"%s%s]", name, rel, quotedValue));
+        joiner.setLength(joiner.length() - 1);
 
-        return this;
+        return paramRel(name, "~", joiner.toString());
     }
 
     public String build() {
