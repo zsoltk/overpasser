@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./gradlew :tests:test
+./gradlew --settings-file settings-travis.gradle :tests:test
