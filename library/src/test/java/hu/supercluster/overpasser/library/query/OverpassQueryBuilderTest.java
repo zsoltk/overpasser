@@ -1,12 +1,16 @@
 package hu.supercluster.overpasser.library.query;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.core.AnyOf.anyOf;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class OverpassQueryBuilderTest {
     OverpassQueryBuilder queryBuilder;
@@ -62,7 +66,11 @@ public class OverpassQueryBuilderTest {
     public void testMultipleValues() throws Exception {
         queryBuilder.multipleValues("foo", new HashSet<>(Arrays.asList("bar", "baz")));
 
-        assertEquals("[\"foo\"~\"bar|baz\"]", queryBuilder.build());
+        // It's a set! Order of elements are not guaranteed to be the same
+        assertThat(queryBuilder.build(), anyOf(
+                equalTo("[\"foo\"~\"bar|baz\"]"),
+                equalTo("[\"foo\"~\"baz|bar\"]"))
+        );
     }
 
     @Test
