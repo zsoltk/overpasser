@@ -1,3 +1,5 @@
+![](https://travis-ci.org/zsoltk/overpasser.svg?branch=master)
+
 # overpasser
 Fluid Java interface to [OpenStreetMap](https://www.openstreetmap.org/) data through querying the [Overpass API](http://wiki.openstreetmap.org/wiki/Overpass_API). No more query string forging by hand!
 
