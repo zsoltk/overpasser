@@ -4,7 +4,7 @@ Contributions are welcome! For a great PR, please consider:
 
 ### Workflow
 * Fork the repository then check out the code
-* Run the tests with ```./gradlew tests:test``` to make sure they pass
+* Run the tests with ```./gradlew library:test``` to make sure they pass
 * Implement your feature
 * Write Javadoc for public API (if applicable)
 * Write tests (if applicable)
