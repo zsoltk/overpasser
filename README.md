@@ -84,6 +84,9 @@ dependencies {
 
 **Please note**: This is not a production ready library. Use it at your own risk.
 
+### Contributing
+
+Contributions are welcome! Please check the [Contribution Guidelines](CONTRIBUTING.md).
 
 ### License
 
