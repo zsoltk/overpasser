@@ -21,3 +21,9 @@ Contributions are welcome! For a great PR, please consider:
   * Try to stay on the same level of abstraction within a method
 * Write a [good commit message](http://chris.beams.io/posts/git-commit/)
 * Commits should contain logically connected changes described by the commit message. More than one step is required to implement the feature? Do not use one "Fixes everything and stuff and also lorem ipsum" commit. Use as many commits as required, each with their own meaningful commit message.
+
+### Overpass documentation
+* [API](http://wiki.openstreetmap.org/wiki/Overpass_API)
+* [Language Guide](http://wiki.openstreetmap.org/wiki/Overpass_API/Language_Guide)
+* [Query language](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL)
+
