@@ -55,8 +55,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassFilterQuery way()
-    {
+    public OverpassFilterQuery way() {
         applySeparator();
         builder.append("way");
 
