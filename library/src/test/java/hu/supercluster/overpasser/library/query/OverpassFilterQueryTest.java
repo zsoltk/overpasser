@@ -2,14 +2,18 @@ package hu.supercluster.overpasser.library.query;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 public class OverpassFilterQueryTest {
     static final String START_TOKEN = "; (";
     static final String END_TOKEN = ";<;)";
+    @Mock OverpassQueryBuilder builder;
     @Mock OverpassQuery query;
     OverpassFilterQuery filterQuery;
 
@@ -17,32 +21,36 @@ public class OverpassFilterQueryTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    private String build(String s) {
-        return START_TOKEN + s + END_TOKEN;
-    }
-
     @Before
     public void setUp() throws Exception {
-        filterQuery = new OverpassFilterQuery(query);
+        filterQuery = new OverpassFilterQuery(query, builder);
+
+        verify(builder).append(START_TOKEN);
     }
 
     @Test
     public void testBuild() throws Exception {
-        assertEquals(build(""), filterQuery.build());
+        filterQuery.build();
+
+        verify(builder).append(END_TOKEN);
+        verify(builder).build();
+        verifyNoMoreInteractions(builder);
     }
 
     @Test
     public void testNode() throws Exception {
         filterQuery.node();
 
-        assertEquals(build("node"), filterQuery.build());
+        verify(builder).append("node");
+        verifyNoMoreInteractions(builder);
     }
 
     @Test
     public void testWay() throws Exception {
         filterQuery.way();
 
-        assertEquals(build("way"), filterQuery.build());
+        verify(builder).append("way");
+        verifyNoMoreInteractions(builder);
     }
 
     @Test
@@ -53,6 +61,9 @@ public class OverpassFilterQueryTest {
                 .way()
         ;
 
-        assertEquals(build("node; way"), filterQuery.build());
+        verify(builder).append("node");
+        verify(builder).append("; ");
+        verify(builder).append("way");
+        verifyNoMoreInteractions(builder);
     }
 }
