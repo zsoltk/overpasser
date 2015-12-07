@@ -4,7 +4,7 @@ abstract class AbstractOverpassQuery {
     protected OverpassQueryBuilder builder;
 
     AbstractOverpassQuery() {
-        builder = new OverpassQueryBuilder();
+        builder = new OverpassQueryBuilderImpl();
     }
 
     public void onSubQueryResult(AbstractOverpassSubQuery subQuery) {
