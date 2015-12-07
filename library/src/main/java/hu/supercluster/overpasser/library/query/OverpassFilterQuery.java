@@ -14,7 +14,15 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
 
     public OverpassFilterQuery(OverpassQuery parent) {
         super(parent);
-        builder = new OverpassQueryBuilderImpl();
+        init();
+    }
+
+    OverpassFilterQuery(OverpassQuery parent, OverpassQueryBuilder builder) {
+        super(parent, builder);
+        init();
+    }
+
+    void init() {
         builder.append("; (");
     }
 
