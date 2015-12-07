@@ -1,6 +1,5 @@
 package hu.supercluster.overpasser.library.query;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 

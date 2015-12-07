@@ -51,6 +51,19 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
+     * Appends the string <i>way</i> to the current query.
+     *
+     * @return the current query object
+     */
+    public OverpassFilterQuery way()
+    {
+        applySeparator();
+        builder.append("way");
+
+        return this;
+    }
+
+    /**
      * A convenience method filtering the output for a single amenity.
      * It's equivalent to calling {@link #equals(String, String)} with ("amenity", amenity)
      *
