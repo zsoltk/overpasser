@@ -17,6 +17,10 @@ public class OverpassQuery extends AbstractOverpassQuery {
         super();
     }
 
+    OverpassQuery(OverpassQueryBuilder builder) {
+        super(builder);
+    }
+
     /**
      * Controls the output format used to return OSM data.
      *

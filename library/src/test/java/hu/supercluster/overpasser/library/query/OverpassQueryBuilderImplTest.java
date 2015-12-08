@@ -11,12 +11,12 @@ import static org.hamcrest.core.AnyOf.anyOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class OverpassQueryBuilderTest {
+public class OverpassQueryBuilderImplTest {
     OverpassQueryBuilder queryBuilder;
 
     @Before
     public void setUp() throws Exception {
-        queryBuilder = new OverpassQueryBuilder();
+        queryBuilder = new OverpassQueryBuilderImpl();
     }
 
     @Test
