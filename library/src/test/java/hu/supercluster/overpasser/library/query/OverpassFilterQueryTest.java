@@ -2,17 +2,19 @@ package hu.supercluster.overpasser.library.query;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.Assert.assertEquals;
+import java.util.Arrays;
+import java.util.HashSet;
+
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 public class OverpassFilterQueryTest {
     static final String START_TOKEN = "; (";
     static final String END_TOKEN = ";<;)";
+
     @Mock OverpassQueryBuilder builder;
     @Mock OverpassQuery query;
     OverpassFilterQuery filterQuery;
@@ -65,5 +67,75 @@ public class OverpassFilterQueryTest {
         verify(builder).append("; ");
         verify(builder).append("way");
         verifyNoMoreInteractions(builder);
+    }
+
+
+    @Test
+    public void testAmenity() throws Exception {
+        filterQuery.amenity("parking");
+
+        verify(builder).equals("amenity", "parking");
+    }
+
+    @Test
+    public void testAmenities() throws Exception {
+        final HashSet<String> amenities = new HashSet<>(Arrays.asList("shop", "market"));
+        filterQuery.amenities(amenities);
+
+        verify(builder).multipleValues("amenity", amenities);
+    }
+
+    @Test
+    public void testEquals() throws Exception {
+        filterQuery.equals("foo", "bar");
+
+        verify(builder).equals("foo", "bar");
+    }
+
+    @Test
+    public void testNotEquals() throws Exception {
+        filterQuery.notEquals("foo", "bar");
+
+        verify(builder).notEquals("foo", "bar");
+    }
+
+    @Test
+    public void testMultipleValues() throws Exception {
+        final HashSet<String> values = new HashSet<>(Arrays.asList("bar", "baz"));
+        filterQuery.multipleValues("foo", values);
+
+        verify(builder).multipleValues("foo", values);
+    }
+
+    @Test
+    public void testRegexMatches() throws Exception {
+        filterQuery.regexMatches("foo", "bar");
+
+        verify(builder).regexMatches("foo", "bar");
+    }
+
+    @Test
+    public void testRegexDoesntMatch() throws Exception {
+        filterQuery.regexDoesntMatch("foo", "bar");
+
+        verify(builder).regexDoesntMatch("foo", "bar");
+    }
+
+    @Test
+    public void testStandaloneParam() throws Exception {
+        filterQuery.standaloneParam("foo");
+
+        verify(builder).standaloneParam("foo");
+    }
+
+    @Test
+    public void testBoundingBox() throws Exception {
+        double lat1 = 1.0d;
+        double lon1 = 2.0d;
+        double lat2 = 3.0d;
+        double lon2 = 4.0d;
+        filterQuery.boundingBox(lat1, lon1, lat2, lon2);
+
+        verify(builder).boundingBox(lat1, lon1, lat2, lon2);
     }
 }
