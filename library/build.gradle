@@ -15,3 +15,11 @@ dependencies {
     testCompile "org.robolectric:robolectric:3.0"
     testCompile 'org.hamcrest:hamcrest-library:1.1'
 }
+
+test {
+    testLogging {
+        events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        outputs.upToDateWhen { false }
+        showStandardStreams = true
+    }
+}
