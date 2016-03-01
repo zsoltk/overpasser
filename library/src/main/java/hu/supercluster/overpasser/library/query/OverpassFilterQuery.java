@@ -185,17 +185,17 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
-     * Adds a (lat1,lon1,lat2,lon2) filter tag to the current query.
+     * Adds a <i>(southernLat,westernLon,northernLat,easternLon)</i> bounding box filter to the current query.
      * 
-     * @param lat1 latitude of the northwest point of the bounding box
-     * @param lon1 longitude of the northwest point of the bounding box
-     * @param lat2 latitude of the southeast point of the bounding box
-     * @param lon2 longitude of the southeast point of the bounding box
+     * @param southernLat
+     * @param westernLon
+     * @param northernLat
+     * @param easternLon
      *
      * @return the current query object
      */
-    public OverpassFilterQuery boundingBox(double lat1, double lon1, double lat2, double lon2) {
-        builder.boundingBox(lat1, lon1, lat2, lon2);
+    public OverpassFilterQuery boundingBox(double southernLat, double westernLon, double northernLat, double easternLon) {
+        builder.boundingBox(southernLat, westernLon, northernLat, easternLon);
 
         return this;
     }
