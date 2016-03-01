@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
@@ -56,16 +57,27 @@ public class OverpassFilterQueryTest {
     }
 
     @Test
+    public void testRel() throws Exception {
+        filterQuery.rel();
+
+        verify(builder).append("rel");
+        verifyNoMoreInteractions(builder);
+    }
+
+    @Test
     public void testPrepareNext() throws Exception {
         filterQuery
                 .node()
                 .prepareNext()
                 .way()
+                .prepareNext()
+                .rel()
         ;
 
         verify(builder).append("node");
-        verify(builder).append("; ");
         verify(builder).append("way");
+        verify(builder).append("rel");
+        verify(builder, times(2)).append("; ");
         verifyNoMoreInteractions(builder);
     }
 

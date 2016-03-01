@@ -59,6 +59,18 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
+     * Appends the string <i>rel</i> to the current query.
+     *
+     * @return the current query object
+     */
+    public OverpassFilterQuery rel() {
+        applySeparator();
+        builder.append("rel");
+
+        return this;
+    }
+
+    /**
      * Appends the string <i>way</i> to the current query.
      *
      * @return the current query object
