@@ -10,10 +10,7 @@ import hu.supercluster.overpasser.library.output.OutputOrder;
 import hu.supercluster.overpasser.library.output.OutputVerbosity;
 
 import static hu.supercluster.overpasser.library.output.OutputFormat.JSON;
-import static org.hamcrest.CoreMatchers.isA;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.verify;
 
 public class UsageExamplesTest {
     @Mock OverpassQueryBuilder builder;
@@ -29,7 +26,7 @@ public class UsageExamplesTest {
     }
 
     @Test
-    public void testExample1() throws Exception {
+    public void testSimpleFilterQuery() throws Exception {
         String result = new OverpassQuery()
                 .format(JSON)
                 .timeout(30)
@@ -52,7 +49,7 @@ public class UsageExamplesTest {
     }
 
     @Test
-    public void testExample2() throws Exception {
+    public void testMultipleFilterQueries() throws Exception {
         String result = new OverpassQuery()
                 .format(JSON)
                 .timeout(30)
@@ -80,6 +77,39 @@ public class UsageExamplesTest {
         String expected = "[\"out\":\"json\"][\"timeout\":\"30\"]; ("
                 + "node[\"amenity\"=\"parking\"][\"access\"!=\"private\"](47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427); "
                 + "way[\"amenity\"=\"parking\"][\"access\"!=\"private\"](47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427)"
+                + ";<;); out body center qt 100;";
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testMultipleFilterQueriesWithGlobalBoundingBoxSearch() throws Exception {
+        String result = new OverpassQuery()
+                .format(JSON)
+                .timeout(30)
+                .boundingBox(
+                        47.48047027491862, 19.039797484874725,
+                        47.51331674014172, 19.07404761761427
+                )
+                .filterQuery()
+                    .node()
+                        .amenity("parking")
+                        .notEquals("access", "private")
+                    .prepareNext()
+                    .way()
+                        .amenity("parking")
+                        .notEquals("access", "private")
+                .end()
+
+                .output(OutputVerbosity.BODY, OutputModificator.CENTER, OutputOrder.QT, 100)
+                .build()
+                ;
+
+        String expected = "[\"out\":\"json\"][\"timeout\":\"30\"]"
+                + "[bbox:47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427]"
+                + "; ("
+                + "node[\"amenity\"=\"parking\"][\"access\"!=\"private\"]; "
+                + "way[\"amenity\"=\"parking\"][\"access\"!=\"private\"]"
                 + ";<;); out body center qt 100;";
 
         assertEquals(expected, result);

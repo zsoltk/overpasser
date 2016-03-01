@@ -2,7 +2,6 @@ package hu.supercluster.overpasser.library.query;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -47,6 +46,13 @@ public class OverpassQueryTest {
         query.timeout(30);
 
         verify(builder).clause("timeout", "30");
+    }
+
+    @Test
+    public void testBbox() throws Exception {
+        query.boundingBox(1.00000001, 2.00000002, 3.00000003, 4.00000004);
+
+        verify(builder).append("[bbox:1.00000001,2.00000002,3.00000003,4.00000004]");
     }
 
     @Test

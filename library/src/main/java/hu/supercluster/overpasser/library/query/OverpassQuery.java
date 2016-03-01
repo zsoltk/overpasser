@@ -1,5 +1,7 @@
 package hu.supercluster.overpasser.library.query;
 
+import java.util.Locale;
+
 import hu.supercluster.overpasser.library.output.OutputFormat;
 import hu.supercluster.overpasser.library.output.OutputModificator;
 import hu.supercluster.overpasser.library.output.OutputOrder;
@@ -49,6 +51,27 @@ public class OverpassQuery extends AbstractOverpassQuery {
      */
     public OverpassQuery timeout(int timeout) {
         builder.clause("timeout", "" + timeout);
+
+        return this;
+    }
+
+    /**
+     * Defines a global bounding box that is then implicitly added to all queries (unless they specify a different explicit bounding box)
+     *
+     * @param southernLat
+     * @param westernLon
+     * @param northernLat
+     * @param easternLon
+     *
+     * @return the current OverpassQuery object
+     */
+    public OverpassQuery boundingBox(double southernLat, double westernLon, double northernLat, double easternLon) {
+        builder.append(String.format(Locale.US, "[bbox:%s,%s,%s,%s]",
+                southernLat,
+                westernLon,
+                northernLat,
+                easternLon
+        ));
 
         return this;
     }
