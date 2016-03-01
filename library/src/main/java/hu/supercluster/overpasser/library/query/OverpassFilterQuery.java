@@ -83,6 +83,18 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
+     * Appends the string <i>area</i> to the current query.
+     *
+     * @return the current query object
+     */
+    public OverpassFilterQuery area() {
+        applySeparator();
+        builder.append("area");
+
+        return this;
+    }
+
+    /**
      * A convenience method filtering the output for a single amenity.
      * It's equivalent to calling {@link #equals(String, String)} with ("amenity", amenity)
      *

@@ -65,6 +65,14 @@ public class OverpassFilterQueryTest {
     }
 
     @Test
+    public void testArea() throws Exception {
+        filterQuery.area();
+
+        verify(builder).append("area");
+        verifyNoMoreInteractions(builder);
+    }
+
+    @Test
     public void testPrepareNext() throws Exception {
         filterQuery
                 .node()
