@@ -210,11 +210,11 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
 
     /**
      * Adds a <i>(southernLat,westernLon,northernLat,easternLon)</i> bounding box filter to the current query.
-     * 
-     * @param southernLat
-     * @param westernLon
-     * @param northernLat
-     * @param easternLon
+     *
+     * @param southernLat the southern latitude
+     * @param westernLon  the western longitude
+     * @param northernLat the northern latitude
+     * @param easternLon  the eastern longitude
      *
      * @return the current query object
      */

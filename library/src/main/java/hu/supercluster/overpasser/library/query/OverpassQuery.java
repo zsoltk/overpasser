@@ -58,10 +58,10 @@ public class OverpassQuery extends AbstractOverpassQuery {
     /**
      * Defines a global bounding box that is then implicitly added to all queries (unless they specify a different explicit bounding box)
      *
-     * @param southernLat
-     * @param westernLon
-     * @param northernLat
-     * @param easternLon
+     * @param southernLat the southern latitude
+     * @param westernLon  the western longitude
+     * @param northernLat the northern latitude
+     * @param easternLon  the eastern longitude
      *
      * @return the current OverpassQuery object
      */
