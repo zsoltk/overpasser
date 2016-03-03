@@ -33,7 +33,7 @@ public class UsageExamplesTest {
                 .filterQuery()
                     .node()
                     .amenity("parking")
-                    .notEquals("access", "private")
+                    .tagNot("access", "private")
                     .boundingBox(
                             47.48047027491862, 19.039797484874725,
                             47.51331674014172, 19.07404761761427
@@ -56,7 +56,7 @@ public class UsageExamplesTest {
                 .filterQuery()
                     .node()
                         .amenity("parking")
-                        .notEquals("access", "private")
+                        .tagNot("access", "private")
                         .boundingBox(
                                 47.48047027491862, 19.039797484874725,
                                 47.51331674014172, 19.07404761761427
@@ -64,7 +64,7 @@ public class UsageExamplesTest {
                     .prepareNext()
                     .way()
                         .amenity("parking")
-                        .notEquals("access", "private")
+                        .tagNot("access", "private")
                         .boundingBox(
                                 47.48047027491862, 19.039797484874725,
                                 47.51331674014172, 19.07404761761427
@@ -72,7 +72,7 @@ public class UsageExamplesTest {
                     .prepareNext()
                     .rel()
                         .amenity("parking")
-                        .notEquals("access", "private")
+                        .tagNot("access", "private")
                         .boundingBox(
                                 47.48047027491862, 19.039797484874725,
                                 47.51331674014172, 19.07404761761427
@@ -103,11 +103,11 @@ public class UsageExamplesTest {
                 .filterQuery()
                     .node()
                         .amenity("parking")
-                        .notEquals("access", "private")
+                        .tagNot("access", "private")
                     .prepareNext()
                     .way()
                         .amenity("parking")
-                        .notEquals("access", "private")
+                        .tagNot("access", "private")
                 .end()
 
                 .output(OutputVerbosity.BODY, OutputModificator.CENTER, OutputOrder.QT, 100)

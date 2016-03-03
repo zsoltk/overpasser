@@ -106,46 +106,47 @@ public class OverpassFilterQueryTest {
     }
 
     @Test
-    public void testEquals() throws Exception {
-        filterQuery.equals("foo", "bar");
+    public void testTag1() throws Exception {
+        filterQuery.tag("foo");
+
+        verify(builder).standaloneParam("foo");
+    }
+
+
+    @Test
+    public void testTag2() throws Exception {
+        filterQuery.tag("foo", "bar");
 
         verify(builder).equals("foo", "bar");
     }
 
     @Test
-    public void testNotEquals() throws Exception {
-        filterQuery.notEquals("foo", "bar");
+    public void testTagNot() throws Exception {
+        filterQuery.tagNot("foo", "bar");
 
         verify(builder).notEquals("foo", "bar");
     }
 
     @Test
-    public void testMultipleValues() throws Exception {
+    public void testTagMultiple() throws Exception {
         final HashSet<String> values = new HashSet<>(Arrays.asList("bar", "baz"));
-        filterQuery.multipleValues("foo", values);
+        filterQuery.tagMultiple("foo", values);
 
         verify(builder).multipleValues("foo", values);
     }
 
     @Test
-    public void testRegexMatches() throws Exception {
-        filterQuery.regexMatches("foo", "bar");
+    public void testTagRegex() throws Exception {
+        filterQuery.tagRegex("foo", "bar");
 
         verify(builder).regexMatches("foo", "bar");
     }
 
     @Test
-    public void testRegexDoesntMatch() throws Exception {
-        filterQuery.regexDoesntMatch("foo", "bar");
+    public void testTagRegexNot() throws Exception {
+        filterQuery.tagRegexNot("foo", "bar");
 
         verify(builder).regexDoesntMatch("foo", "bar");
-    }
-
-    @Test
-    public void testStandaloneParam() throws Exception {
-        filterQuery.standaloneParam("foo");
-
-        verify(builder).standaloneParam("foo");
     }
 
     @Test

@@ -96,7 +96,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
 
     /**
      * A convenience method filtering the output for a single amenity.
-     * It's equivalent to calling {@link #equals(String, String)} with ("amenity", amenity)
+     * It's equivalent to calling {@link #tag(String, String)} with ("amenity", amenity)
      *
      * @see #amenities(Set)
      *
@@ -112,7 +112,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
 
     /**
      * A convenience method filtering the output for multiple amenities.
-     * It's equivalent to calling {@link #multipleValues(String, Set)} with ("amenity", amenities)
+     * It's equivalent to calling {@link #tagMultiple(String, Set)} with ("amenity", amenities)
      * 
      * @param amenities the filter values
      *
@@ -125,6 +125,19 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
+     * Adds a <i>["name"]</i> filter tag to the current query.
+     *
+     * @param name the filter name
+     *
+     * @return the current query object
+     */
+    public OverpassFilterQuery tag(String name) {
+        builder.standaloneParam(name);
+
+        return this;
+    }
+
+    /**
      * Adds a <i>["name"=value]</i> filter tag to the current query.
      * 
      * @param name the filter name
@@ -132,7 +145,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassFilterQuery equals(String name, String value) {
+    public OverpassFilterQuery tag(String name, String value) {
         builder.equals(name, value);
 
         return this;
@@ -147,7 +160,7 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassFilterQuery multipleValues(String name, Set<String> values) {
+    public OverpassFilterQuery tagMultiple(String name, Set<String> values) {
         builder.multipleValues(name, values);
 
         return this;
@@ -161,49 +174,36 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
      *
      * @return the current query object
      */
-    public OverpassFilterQuery notEquals(String name, String value) {
+    public OverpassFilterQuery tagNot(String name, String value) {
         builder.notEquals(name, value);
 
         return this;
     }
 
     /**
-     * Adds a <i>["name"!~value]</i> filter tag to the current query.
-     * 
-     * @param name the filter name
-     * @param value the filter value
-     *
-     * @return the current query object
-     */
-    public OverpassFilterQuery regexDoesntMatch(String name, String value) {
-        builder.regexDoesntMatch(name, value);
-
-        return this;
-    }
-
-    /**
      * Adds a <i>["name"~value]</i> filter tag to the current query.
-     * 
+     *
      * @param name the filter name
      * @param value the filter value
      *
      * @return the current query object
      */
-    public OverpassFilterQuery regexMatches(String name, String value) {
+    public OverpassFilterQuery tagRegex(String name, String value) {
         builder.regexMatches(name, value);
 
         return this;
     }
 
     /**
-     * Adds a <i>["name"]</i> filter tag to the current query.
-     * 
+     * Adds a <i>["name"!~value]</i> filter tag to the current query.
+     *
      * @param name the filter name
+     * @param value the filter value
      *
      * @return the current query object
      */
-    public OverpassFilterQuery standaloneParam(String name) {
-        builder.standaloneParam(name);
+    public OverpassFilterQuery tagRegexNot(String name, String value) {
+        builder.regexDoesntMatch(name, value);
 
         return this;
     }

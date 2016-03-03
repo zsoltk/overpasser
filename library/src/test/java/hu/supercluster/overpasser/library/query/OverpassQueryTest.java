@@ -49,7 +49,7 @@ public class OverpassQueryTest {
     }
 
     @Test
-    public void testBbox() throws Exception {
+    public void testBoundingBox() throws Exception {
         query.boundingBox(1.00000001, 2.00000002, 3.00000003, 4.00000004);
 
         verify(builder).append("[bbox:1.00000001,2.00000002,3.00000003,4.00000004]");

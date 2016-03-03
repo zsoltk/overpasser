@@ -19,7 +19,7 @@ public class MapOverpassAdapter {
                 .filterQuery()
                     .node()
                     .amenity("parking")
-                    .notEquals("access", "private")
+                    .tagNot("access", "private")
                     .boundingBox(
                             bounds.southwest.latitude,
                             bounds.southwest.longitude,
