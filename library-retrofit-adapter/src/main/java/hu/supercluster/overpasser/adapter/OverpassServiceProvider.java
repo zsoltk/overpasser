@@ -1,7 +1,7 @@
 package hu.supercluster.overpasser.adapter;
 
-import retrofit.Retrofit;
-import retrofit.GsonConverterFactory;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OverpassServiceProvider {
     private static OverpassService service;
