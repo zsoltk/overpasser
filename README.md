@@ -61,7 +61,7 @@ String query = new OverpassQuery()
   * it will handle sending your generated query to the server and parsing the results
   * the results are returned in a [simple POJO class](https://github.com/zsoltk/overpasser/blob/master/library-retrofit-adapter/src/main/java/hu/supercluster/overpasser/adapter/OverpassQueryResult.java)
   * for further info regarding network communication and error handling, please refer to [Retrofit](http://square.github.io/retrofit/) documentation
-  * uses Retrofit 2.0.0-beta4
+  * uses Retrofit 2.1.0
 * [library-retrofit-legacy-adapter](https://github.com/zsoltk/overpasser/tree/master/library-retrofit-legacy-adapter): for Retrofit 1.9
 * [sample](https://github.com/zsoltk/overpasser/tree/master/sample): an Android sample application using both of the above modules to query for and display the public parking lots within the boundaries of the map
 
@@ -74,21 +74,21 @@ The library and the retrofit adapter are available on Maven Central:
 Library:
 ```groovy
 dependencies {
-    compile 'hu.supercluster:overpasser:0.2.0'
+    compile 'hu.supercluster:overpasser:0.2.2'
 }
 ```
   
-Retrofit adapter (for version 2.0-beta4):
+Retrofit adapter (for version 2.1.0):
 ```groovy
 dependencies {
-    compile 'hu.supercluster:overpasser-retrofit-adapter:0.2.0'
+    compile 'hu.supercluster:overpasser-retrofit-adapter:0.2.2'
 }
 ```
 
 Retrofit legacy adapter (for version 1.9):
 ```groovy
 dependencies {
-    compile 'hu.supercluster:overpasser-retrofit-legacy-adapter:0.2.0'
+    compile 'hu.supercluster:overpasser-retrofit-legacy-adapter:0.2.2'
 }
 ```
 
