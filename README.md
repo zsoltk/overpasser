@@ -1,6 +1,6 @@
-![](https://travis-ci.org/zsoltk/overpasser.svg?branch=master)
-
 # overpasser
+[![Build Status](https://travis-ci.org/zsoltk/overpasser.svg?branch=master)](https://travis-ci.org/zsoltk/overpasser)
+
 Fluid Java interface to [OpenStreetMap](https://www.openstreetmap.org/) data through querying the [Overpass API](http://wiki.openstreetmap.org/wiki/Overpass_API). No more query string forging by hand!
 
 ### Example code
@@ -25,7 +25,7 @@ String query = new OverpassQuery()
         .filterQuery()
             .node()
             .amenity("parking")
-            .notEquals("access", "private")
+            .tagNot("access", "private")
             .boundingBox(
                 47.48047027491862, 19.039797484874725,
                 47.51331674014172, 19.07404761761427
@@ -43,14 +43,15 @@ String query = new OverpassQuery()
   * [output format](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Output_Format_.28out.29)
   * [timeout](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#timeout)
   * [output parameters](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Print_.28out.29) - verbosity, modificators, sort order
-* [Filters](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Filters)
-  * standalone filter 
-  * exact filter matching by value (and negation)
-  * regex filter matching by value (and negation)
-  * multiple values
-* Map queries
-  * selecting nodes
-  * setting [bounding box](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Bounding_box)
+* Filter queries
+  * selecting nodes, ways, relations, areas
+  * setting a [bounding box](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Global_bounding_box_.28bbox.29) globally
+  * setting a [bounding box](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Bounding_box) for a filter query
+* [Tag filter expressions](http://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#Filters)
+    * check tag exists 
+    * exact matching by tag value (and negation)
+    * regex matching by tag value (and negation)
+    * multiple tag values
   
 ### Modules
 * [library](https://github.com/zsoltk/overpasser/tree/master/library): core functionality in a standalone module 
@@ -60,25 +61,34 @@ String query = new OverpassQuery()
   * it will handle sending your generated query to the server and parsing the results
   * the results are returned in a [simple POJO class](https://github.com/zsoltk/overpasser/blob/master/library-retrofit-adapter/src/main/java/hu/supercluster/overpasser/adapter/OverpassQueryResult.java)
   * for further info regarding network communication and error handling, please refer to [Retrofit](http://square.github.io/retrofit/) documentation
+  * uses Retrofit 2.0.0-beta4
+* [library-retrofit-legacy-adapter](https://github.com/zsoltk/overpasser/tree/master/library-retrofit-legacy-adapter): for Retrofit 1.9
 * [sample](https://github.com/zsoltk/overpasser/tree/master/sample): an Android sample application using both of the above modules to query for and display the public parking lots within the boundaries of the map
 
 ![](http://imgur.com/A4TGjjx.png)
 
 ### Download
 
-The library and the retrofit adapter are available on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Coverpasser). You can find them with [Gradle, please](http://gradleplease.appspot.com/#overpasser) too, or just use these gradle dependencies:
+The library and the retrofit adapter are available on Maven Central:
 
 Library:
 ```groovy
 dependencies {
-    compile 'hu.supercluster:overpasser:0.1.0'
+    compile 'hu.supercluster:overpasser:0.2.0'
 }
 ```
   
-Retrofit adapter:
+Retrofit adapter (for version 2.0-beta4):
 ```groovy
 dependencies {
-    compile 'hu.supercluster:overpasser-retrofit-adapter:0.1.0'
+    compile 'hu.supercluster:overpasser-retrofit-adapter:0.2.0'
+}
+```
+
+Retrofit legacy adapter (for version 1.9):
+```groovy
+dependencies {
+    compile 'hu.supercluster:overpasser-retrofit-legacy-adapter:0.2.0'
 }
 ```
 
