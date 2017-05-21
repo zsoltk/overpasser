@@ -159,4 +159,22 @@ public class OverpassFilterQueryTest {
 
         verify(builder).boundingBox(lat1, lon1, lat2, lon2);
     }
+
+    @Test
+    public void testAroundOnlyRadius() throws Exception {
+        double radius = 1.0d;
+        filterQuery.around(radius);
+
+        verify(builder).around(radius);
+    }
+
+    @Test
+    public void testAround() throws Exception {
+        double radius = 1.0d;
+        double lat = 3.0d;
+        double lon = 4.0d;
+        filterQuery.around(radius, lat, lon);
+
+        verify(builder).around(radius, lat, lon);
+    }
 }
