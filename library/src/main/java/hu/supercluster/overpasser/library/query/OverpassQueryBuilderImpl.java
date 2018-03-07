@@ -19,12 +19,18 @@ class OverpassQueryBuilderImpl implements OverpassQueryBuilder {
     }
 
     private OverpassQueryBuilder paramRel(String name, String rel, String value) {
+        return paramRel(name, rel, value, true);
+    }
+
+    private OverpassQueryBuilder paramRel(String name, String rel, String value, boolean quoteName) {
         String quotedValue = value.isEmpty() ? "" : String.format("\"%s\"", value);
+
+        String pattern = quoteName ? "[\"%s\"%s%s]" : "[%s%s%s]";
 
         return append(
                 String.format(
                         LOCALE,
-                        "[\"%s\"%s%s]",
+                        pattern,
                         name, rel, quotedValue
                 )
         );
@@ -39,6 +45,11 @@ class OverpassQueryBuilderImpl implements OverpassQueryBuilder {
                         lat1, lon1, lat2, lon2
                 )
         );
+    }
+
+    @Override
+    public OverpassQueryBuilder setting(String name, String value) {
+        return paramRel(name, ":", value, false);
     }
 
     @Override
