@@ -38,14 +38,14 @@ public class OverpassQueryTest {
     public void testFormat() throws Exception {
         query.format(JSON);
 
-        verify(builder).clause("out", "json");
+        verify(builder).setting("out", "json");
     }
 
     @Test
     public void testTimeout() throws Exception {
         query.timeout(30);
 
-        verify(builder).clause("timeout", "30");
+        verify(builder).setting("timeout", "30");
     }
 
     @Test

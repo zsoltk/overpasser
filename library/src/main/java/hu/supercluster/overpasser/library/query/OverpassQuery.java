@@ -34,7 +34,7 @@ public class OverpassQuery extends AbstractOverpassQuery {
      * @return the current OverpassQuery object
      */
     public OverpassQuery format(OutputFormat outputFormat) {
-        builder.clause("out", outputFormat.toString().toLowerCase());
+        builder.setting("out", outputFormat.toString().toLowerCase());
 
         return this;
     }
@@ -50,7 +50,7 @@ public class OverpassQuery extends AbstractOverpassQuery {
      * @return the current OverpassQuery object
      */
     public OverpassQuery timeout(int timeout) {
-        builder.clause("timeout", "" + timeout);
+        builder.setting("timeout", "" + timeout);
 
         return this;
     }

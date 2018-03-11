@@ -43,7 +43,7 @@ public class UsageExamplesTest {
                 .build()
         ;
 
-        String expected = "[\"out\":\"json\"][\"timeout\":\"30\"]; (node[\"amenity\"=\"parking\"][\"access\"!=\"private\"](47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427);<;); out body center qt 100;";
+        String expected = "[out:\"json\"][timeout:\"30\"]; (node[\"amenity\"=\"parking\"][\"access\"!=\"private\"](47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427);<;); out body center qt 100;";
 
         assertEquals(expected, result);
     }
@@ -82,7 +82,7 @@ public class UsageExamplesTest {
                 .build()
         ;
 
-        String expected = "[\"out\":\"json\"][\"timeout\":\"30\"]; ("
+        String expected = "[out:\"json\"][timeout:\"30\"]; ("
                 + "node[\"amenity\"=\"parking\"][\"access\"!=\"private\"](47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427); "
                 + "way[\"amenity\"=\"parking\"][\"access\"!=\"private\"](47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427); "
                 + "rel[\"amenity\"=\"parking\"][\"access\"!=\"private\"](47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427)"
@@ -114,7 +114,7 @@ public class UsageExamplesTest {
                 .build()
                 ;
 
-        String expected = "[\"out\":\"json\"][\"timeout\":\"30\"]"
+        String expected = "[out:\"json\"][timeout:\"30\"]"
                 + "[bbox:47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427]"
                 + "; ("
                 + "node[\"amenity\"=\"parking\"][\"access\"!=\"private\"]; "
