@@ -41,6 +41,20 @@ public class OverpassQueryBuilderImplTest {
     }
 
     @Test
+    public void testAroundOnlyRadius() throws Exception {
+        queryBuilder.around(1.01d);
+
+        assertEquals("(around:1.01)", queryBuilder.build());
+    }
+
+    @Test
+    public void testAround() throws Exception {
+        queryBuilder.around(1.01d, 2.002d, 3.003d);
+
+        assertEquals("(around:1.01,2.002,3.003)", queryBuilder.build());
+    }
+
+    @Test
     public void testStandaloneParam() throws Exception {
         queryBuilder.standaloneParam("foo");
 

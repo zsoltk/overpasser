@@ -6,6 +6,8 @@ interface OverpassQueryBuilder {
     OverpassQueryBuilder append(String statement);
     OverpassQueryBuilder boundingBox(double lat1, double lon1, double lat2, double lon2);
     OverpassQueryBuilder setting(String name, String value);
+    OverpassQueryBuilder around(double radius);
+    OverpassQueryBuilder around(double radius, double lat, double lon);
     OverpassQueryBuilder standaloneParam(String name);
     OverpassQueryBuilder clause(String name, String value);
     OverpassQueryBuilder equals(String name, String value);
