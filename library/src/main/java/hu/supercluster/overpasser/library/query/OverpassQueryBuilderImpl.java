@@ -48,6 +48,28 @@ class OverpassQueryBuilderImpl implements OverpassQueryBuilder {
     }
 
     @Override
+    public OverpassQueryBuilder around(double radius) {
+        return append(
+                String.format(
+                        LOCALE,
+                        "(around:%s)",
+                        radius
+                )
+        );
+    }
+
+    @Override
+    public OverpassQueryBuilder around(double radius, double lat, double lon) {
+        return append(
+                String.format(
+                        LOCALE,
+                        "(around:%s,%s,%s)",
+                        radius, lat, lon
+                )
+        );
+    }
+
+    @Override
     public OverpassQueryBuilder setting(String name, String value) {
         return paramRel(name, ":", value, false);
     }

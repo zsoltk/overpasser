@@ -225,6 +225,32 @@ public class OverpassFilterQuery extends AbstractOverpassSubQuery {
     }
 
     /**
+     * Adds a <i>(around:radius)</i> around radius filter to the current query.
+     *
+     * @param radius in meters around a predecessor input node
+     * @return the current query object
+     */
+    public OverpassFilterQuery around(double radius) {
+        builder.around(radius);
+
+        return this;
+    }
+
+    /**
+     * Adds a <i>(around:radius, centerLat, centerLon)</i> around radius with center filter to the current query.
+     *
+     * @param radius in meters around the specified center
+     * @param lat latitude of the center coordinate
+     * @param lon longitude of the center coordinate
+     * @return the current query object
+     */
+    public OverpassFilterQuery around(double radius, double lat, double lon) {
+        builder.around(radius, lat, lon);
+
+        return this;
+    }
+
+    /**
      * Closes the current query with the characters <i>;&lt;;)</i> and returns the output as a string.
      *
      * @return the query as string

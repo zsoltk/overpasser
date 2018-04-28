@@ -123,4 +123,45 @@ public class UsageExamplesTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    public void testMultipleFilterQueriesAround() throws Exception {
+        String result = new OverpassQuery()
+                .format(JSON)
+                .timeout(30)
+                .filterQuery()
+                    .node()
+                        .amenity("parking")
+                        .tagNot("access", "private")
+                        .around(50.5)
+                        .prepareNext()
+                    .way()
+                        .amenity("parking")
+                        .tagNot("access", "private")
+                        .around(
+                                50.5, 47.48047027491862, 19.039797484874725
+                        )
+                        .prepareNext()
+                    .rel()
+                        .amenity("parking")
+                        .tagNot("access", "private")
+                        .boundingBox(
+                                47.48047027491862, 19.039797484874725,
+                                47.51331674014172, 19.07404761761427
+                        )
+                .end()
+                .output(OutputVerbosity.BODY, OutputModificator.CENTER, OutputOrder.QT, 100)
+                .build()
+        ;
+
+        String expected = "[out:\"json\"][timeout:\"30\"]; ("
+                + "node[\"amenity\"=\"parking\"][\"access\"!=\"private\"](around:50.5); "
+                + "way[\"amenity\"=\"parking\"][\"access\"!=\"private\"]"
+                + "(around:50.5,47.48047027491862,19.039797484874725); "
+                + "rel[\"amenity\"=\"parking\"][\"access\"!=\"private\"]"
+                + "(47.48047027491862,19.039797484874725,47.51331674014172,19.07404761761427)"
+                + ";<;); out body center qt 100;";
+
+        assertEquals(expected, result);
+    }
 }
