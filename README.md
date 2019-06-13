@@ -1,5 +1,6 @@
 # overpasser
 [![Build Status](https://travis-ci.org/zsoltk/overpasser.svg?branch=master)](https://travis-ci.org/zsoltk/overpasser)
+[![Open Source Helpers](https://www.codetriage.com/zsoltk/overpasser/badges/users.svg)](https://www.codetriage.com/zsoltk/overpasser)
 
 Fluid Java interface to [OpenStreetMap](https://www.openstreetmap.org/) data through querying the [Overpass API](http://wiki.openstreetmap.org/wiki/Overpass_API). No more query string forging by hand!
 
